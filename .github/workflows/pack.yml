@@ -10,8 +10,62 @@ on:
   # Allows you to run this workflow manually from the Actions tab
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
+  # This workflow contains a single job called "build
+  # linux
+  build-linux:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: create linux package(multi-files,console)
+        run: |
+          pip install pyinstaller
+          pyinstaller main.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Linux_multi-files_console
+          path: dist/*
+      - run: rm -r dist/
+          
+      - name: create linux package(single-file,console)
+        run: |
+          pip install pyinstaller
+          pyinstaller -F main.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Linux_single-file_console
+          path: dist/*
+      - run: rm -r dist/
+          
+      - name: create linux package(multi-files,windowed)
+        run: |
+          pip install pyinstaller
+          pyinstaller -w main.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Linux_multi-files_windowed
+          path: dist/*
+      - run: rm -r dist/
+          
+      - name: create linux package(single-file,windowed)
+        run: |
+          pip install pyinstaller
+          pyinstaller -w -F main.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Linux_single-file_windowed
+
+
+
+
+  # windows
+  build-windows:
     # The type of runner that the job will run on
     runs-on: windows-latest
 
@@ -63,4 +117,59 @@ jobs:
           name: Windows_single-file_windowed
           path: dist/*
       - run: rm -r dist/
+
+
+
+
       
+# macos
+  build-macos:
+    # The type of runner that the job will run on
+    runs-on: macos-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: create macos package(multi-files,console)
+        run: |
+          pip install pyinstaller
+          pyinstaller main.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: macos_multi-files_console
+          path: dist/*
+      - run: rm -r dist/
+          
+      - name: create macos package(single-file,console)
+        run: |
+          pip install pyinstaller
+          pyinstaller -F main.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: macos_single-file_console
+          path: dist/*
+      - run: rm -r dist/
+          
+      - name: create macos package(multi-files,windowed)
+        run: |
+          pip install pyinstaller
+          pyinstaller -w main.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: macos_multi-files_windowed
+          path: dist/*
+      - run: rm -r dist/
+          
+      - name: create macos package(single-file,windowed)
+        run: |
+          pip install pyinstaller
+          pyinstaller -w -F main.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: macos_single-file_windowed
+          path: dist/*
+      - run: rm -r dist/

@@ -13,7 +13,7 @@ from kivy.uix.image import Image
 from kivy.clock import Clock
 from kivy.uix.switch import Switch
 import hashlib
-import backend  # Updated import
+import backend
 import os
 from datetime import datetime
 from requests import get

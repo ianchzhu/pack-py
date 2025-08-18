@@ -32,7 +32,7 @@ jobs:
         with:
           name: Windows_multi-files_console
           path: dist/*
-      - run: rm dist/*
+      - run: rmdir dist/*
           
       - name: create windows package(single-file,console)
         run: |
@@ -42,7 +42,7 @@ jobs:
         with:
           name: Windows_single-file_console
           path: dist/*
-      - run: rm dist/*
+      - run: rmdir dist/*
           
       - name: create windows package(multi-files,windowed)
         run: |
@@ -52,7 +52,7 @@ jobs:
         with:
           name: Windows_multi-files_windowed
           path: dist/*
-      - run: rm dist/*
+      - run: rmdir dist/*
           
       - name: create windows package(single-file,windowed)
         run: |
@@ -62,5 +62,5 @@ jobs:
         with:
           name: Windows_single-file_windowed
           path: dist/*
-      - run: rm dist/*
+      - run: rmdir dist/*
       

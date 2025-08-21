@@ -24,7 +24,7 @@ jobs:
         with:
           python-version: '3.13'
          
-      - name: create linux package(single-file,console)
+      - name: create linux packages
         run: python main.py
       - uses: actions/upload-artifact@v4
         with:
@@ -43,7 +43,7 @@ jobs:
         with:
           python-version: '3.13'
          
-      - name: create linux package(single-file,console)
+      - name: create windows packages
         run: python main.py
       - uses: actions/upload-artifact@v4
         with:
@@ -62,7 +62,7 @@ jobs:
         with:
           python-version: '3.13'
          
-      - name: create linux package(single-file,console)
+      - name: create macos packages
         run: python main.py
       - uses: actions/upload-artifact@v4
         with:

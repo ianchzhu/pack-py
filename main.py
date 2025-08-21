@@ -15,10 +15,10 @@ elif sys.platform.startswith('win32'):
     sysname="win"
 dic = dic[sysname]
 if dic["console"]["singlefile"]:
-  cmd("pyinstaller main.py")
+  cmd("pyinstaller project/main.py")
 if dic["windowed"]["singlefile"]:
-  cmd("pyinstaller -w -F main.py")
+  cmd("pyinstaller -w -F project/main.py")
 if dic["console"]["multifile"]:
-  cmd("pyinstaller -F main.py")
+  cmd("pyinstaller -F project/main.py")
 if dic["windowed"]["multifile"]:
-  cmd("pyinstaller -w main.py")
+  cmd("pyinstaller -w project/main.py")
